@@ -9,7 +9,6 @@ exports.signup = (request,response)=>{
         return response.status(500).json(err);
     });
 }
-
 exports.signin = (request,response)=>{
     Admin.findOne({
         email : request.body.email,
