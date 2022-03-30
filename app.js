@@ -3,10 +3,11 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
+const cors = require("cors");
 const port = process.env.PORT || 3000;
 
 const adminRouter = require("./routes/admin.route");
-
+app.use(cors());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 mongoose.connect("mongodb+srv://parthpatodi:Parth123@mongo-test.ni0an.mongodb.net/test?retryWrites=true&w=majority").then((result) => {
@@ -14,7 +15,6 @@ mongoose.connect("mongodb+srv://parthpatodi:Parth123@mongo-test.ni0an.mongodb.ne
 }).catch((err) => { 
     console.log(err);
 });
-
 
 app.use("/",adminRouter);
 app.listen(port,()=>{
