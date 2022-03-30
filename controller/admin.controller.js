@@ -14,8 +14,8 @@ exports.signin = (request,response)=>{
         email : request.body.email,
         password : request.body.password
     }).then((result) => {
-        return response.status(200).json(result);
+        return response.status(200).json({result : result});
     }).catch((err) => {
-        return response.status(500).json(err);
+        return response.status(500).json({error : err});
     });
 }
