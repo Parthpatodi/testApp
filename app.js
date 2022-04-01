@@ -7,6 +7,8 @@ const cors = require("cors");
 const port = process.env.PORT || 3000;
 
 const adminRouter = require("./routes/admin.route");
+const categoryRouter = require("./routes/category.routes");
+
 app.use(cors());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
@@ -17,6 +19,8 @@ mongoose.connect("mongodb+srv://parthpatodi:Parth123@mongo-test.ni0an.mongodb.ne
 });
 
 app.use("/",adminRouter);
+
+app.use("/category",categoryRouter)
 app.listen(port,()=>{
     console.log("Server Started");
 })
