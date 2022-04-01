@@ -20,7 +20,7 @@ mongoose.connect("mongodb+srv://parthpatodi:Parth123@mongo-test.ni0an.mongodb.ne
 
 app.use("/",adminRouter);
 
-app.use("/category",categoryRouter)
+// app.use("/category",categoryRouter)
 app.listen(port,()=>{
     console.log("Server Started");
 })
