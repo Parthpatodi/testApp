@@ -1,7 +1,9 @@
 const express = require("express");
 const categoryController = require("../controller/category.controller");
+const verifyToken = require("../middleware/verify_token");
 const router = express.Router();
 const multer = require("multer");
+
 var storage = multer.diskStorage(
     {
        destination : 'public/images',
@@ -12,6 +14,6 @@ var storage = multer.diskStorage(
 );
 var upload = multer({storage : storage});
 
-router.post("/add-category",upload.single('image'),categoryController.addCategory);
+router.post("/add-category",verifyToken.verifyToken,upload.single('image'),categoryController.addCategory);
 
 module.exports = router;
